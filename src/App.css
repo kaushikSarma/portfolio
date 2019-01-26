@@ -261,4 +261,7 @@ p {
         margin: 0 auto;
         left: 0;
     }
+    .page-navbar-side {
+        opacity: 0;
+    }
 }

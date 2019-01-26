@@ -28,3 +28,25 @@
 .page-navbar-bottom > a:hover::after {
     width: 100%;
 }
+
+
+.page-navbar-side {
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 400;
+    opacity: 0;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.page-navbar-side a {
+    height: 25vh;
+    color: black;
+    display: none;
+    font-family: 'Reenie Beanie', cursive;
+}

@@ -4,7 +4,7 @@ import Contact from './components/contact'
 import Experience from './components/experience'
 import Home from './components/home'
 import Projects from './components/projects'
-
+import SideNav from './components/sidenav'
 import './App.css'
 
 
@@ -91,6 +91,7 @@ class App extends Component {
   render() {
     return (
       <div className='page-wrapper'>
+        <SideNav />
         <Home key={0} i={0} getRef={this.getRef} />
         <About key={1} i={1} getRef={this.getRef} />
         <Experience key={2} i={2} getRef={this.getRef} />
