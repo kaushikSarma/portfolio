@@ -1,32 +1,263 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
+    user-select: none;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+a {
+    text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+#root {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.page-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: auto;
+}
+
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh !important;
+    margin: 0;
+    z-index: 200;
+}
+
+.page-content {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.page-content>h1 {
+    font-family: 'Reenie Beanie', cursive;
+    position: absolute;
+    font-weight: 100;
+    left: 50%;
+    bottom: 50vh;
+    font-size: 5em;
+    line-height: 90%;
+    transform: translate(-50%, 50%);
+}
+
+h2 {
+    margin: 0;
+    padding: 20px;
+}
+
+highlight {
+    color: cyan;
+    font-size: 2em;
+}
+
+strong {
+    position: relative;
+    z-index: 200;
+    color: red;
+}
+
+strong::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: cyan;
+    opacity: 0.2;
+    height: 1em;
+    z-index: 100;
+}
+
+.padding-lg {
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+p {
+    text-align: justify;
+    margin: 20px auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-panel {
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+    transition: 1s all cubic-bezier(.77, 0, .175, 1);
+}
+
+.primary-bg {
+    background-color: #80DEEA;
+}
+
+.dark-bg {
+    background: #2d2d2d;
+    color: #efefef;
+}
+
+.primary-bg h1 {
+    text-shadow: 4px 4px 2px #efefef;
+}
+
+.dark-bg h1 {
+    text-shadow: 4px 4px 2px #1d1d1d;
+}
+
+.page-panel.left {
+    position: absolute;
+    top: 0;
+    z-index: 200;
+    min-height: 100vh;
+    left: 0;
+}
+
+.page-panel.left.fixed {
+    position: fixed;
+}
+
+.page-panel.right {
+    position: relative;
+    z-index: 100;
+    left: 50%;
+    overflow: auto;
+    padding: 6em;
+}
+
+.page-panel.right::-webkit-scrollbar {
+    width: 0px;
+    /* remove scrollbar space */
+    background: transparent;
+    /* optional: just make scrollbar invisible */
+}
+
+.icon-table {
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.workexp {
+    margin-bottom: 120px;
+}
+
+.project-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.project {
+    text-align: left;
+    width: 300px !important;
+    padding: 20px;
+    margin: 20px;
+    flex: auto;
+}
+
+.project h4 {
+    color: cyan;
+    font-size: 1.5em;
+    margin: 0;
+    position: relative;
+}
+
+.project h5 {
+    opacity: 0.8;
+    margin: 0;
+    font-weight: 100;
+    position: relative;
+}
+
+.project h5::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background: #efefef;
+    width: 100%;
+    height: 1px;
+}
+
+.project p {
+    text-align: left;
+}
+
+.contact-page h3 {
+    width: 300px;
+    text-align: left;
+    margin-top: 6em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-page p {
+    width: 300px;
+    margin: 10px auto;
+    user-select: text;
+    position: relative;
+    z-index: 200 !important;
+}
+
+.contact-page p::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: black;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    z-index: 100 !important;
+    transition: 0.2s all;
+}
+
+.contact-page p span {
+    position: relative;
+    z-index: 200;
+}
+
+.contact-page p:hover::before {
+    height: 1.5em;
+    background: cyan;
+    opacity: 0.2;
+}
+
+@media only screen and (max-width: 1064px) {
+    .page-panel.right {
+        padding: 2em;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .page {
+        display: block;
+    }
+    .page h3 {
+        margin: 0 auto;
+    }
+    .page-panel.left, .page-panel.left.fixed, .page-panel.right {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        left: 0;
+    }
 }

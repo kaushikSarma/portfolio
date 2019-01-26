@@ -1,0 +1,30 @@
+.page-navbar-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.page-navbar-bottom > a {
+    text-align: center;
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+    color: inherit;
+}
+
+.page-navbar-bottom > a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: coral;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%);
+    transition: all 0.2s;
+}
+
+.page-navbar-bottom > a:hover::after {
+    width: 100%;
+}
