@@ -17,10 +17,12 @@ class App extends Component {
     this.scrollPositions = {}
     this.aboutFlag = false
     this.workFlag = false
+    this.isMobile = (window.innerWidth <= 760)
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleResize);
     let h = 0
     this.sections.forEach((section, i) => {
       h += section.getBoundingClientRect().height
@@ -37,41 +39,51 @@ class App extends Component {
   }
 
   nav = React.createRef();
-
+  handleResize = () => {
+    this.isMobile = (window.innerWidth <= 760)
+    let h = 0
+    this.sections.forEach((section, i) => {
+      h += section.getBoundingClientRect().height
+      this.scrollPositions[i] = h;
+    });
+    console.log(this.scrollPositions)
+  }
   handleScroll = () => {
-    lastScrollY = window.scrollY;
-    if (lastScrollY < this.scrollPositions[0]) {
-      if (this.aboutFlag) {
-        this.sections[1].children[0].classList.remove('fixed');
-        this.sections[1].children[0]['style']['bottom'] = ''
-        this.aboutFlag = false
-      }
-    } else if (lastScrollY >= this.scrollPositions[0] && lastScrollY < this.scrollPositions[1] - this.scrollPositions[0]) {
-      if (!this.aboutFlag) {
-        this.sections[1].children[0].classList.add('fixed');
-        this.aboutFlag = true
-      }
-    } else if (lastScrollY >= this.scrollPositions[1] - this.scrollPositions[0] && lastScrollY < this.scrollPositions[1]) {
-      if (this.aboutFlag) {
-        this.sections[1].children[0].classList.remove('fixed');
-        this.sections[1].children[0]['style']['bottom'] = 0
-        this.aboutFlag = false
-      }
-      if (this.workFlag) {
-        this.sections[2].children[0].classList.remove('fixed');
-        this.sections[2].children[0]['style']['bottom'] = ''
-        this.workFlag = false
-      }
-    } else if (lastScrollY >= this.scrollPositions[1] && lastScrollY < this.scrollPositions[2] - this.scrollPositions[0]) {
-      if (!this.workFlag) {
-        this.sections[2].children[0].classList.add('fixed');
-        this.workFlag = true
-      }
-    } else if (lastScrollY >= this.scrollPositions[2] - this.scrollPositions[0]){
-      if (this.workFlag) {
-        this.sections[2].children[0].classList.remove('fixed');
-        this.sections[2].children[0]['style']['bottom'] = 0
-        this.workFlag = false
+    if(!this.isMobile) {
+      lastScrollY = window.scrollY;
+      if (lastScrollY < this.scrollPositions[0]) {
+        if (this.aboutFlag) {
+          this.sections[1].children[0].classList.remove('fixed');
+          this.sections[1].children[0]['style']['bottom'] = ''
+          this.aboutFlag = false
+        }
+      } else if (lastScrollY >= this.scrollPositions[0] && lastScrollY < this.scrollPositions[1] - this.scrollPositions[0]) {
+        if (!this.aboutFlag) {
+          this.sections[1].children[0].classList.add('fixed');
+          this.aboutFlag = true
+        }
+      } else if (lastScrollY >= this.scrollPositions[1] - this.scrollPositions[0] && lastScrollY < this.scrollPositions[1]) {
+        if (this.aboutFlag) {
+          this.sections[1].children[0].classList.remove('fixed');
+          this.sections[1].children[0]['style']['bottom'] = 0
+          this.aboutFlag = false
+        }
+        if (this.workFlag) {
+          this.sections[2].children[0].classList.remove('fixed');
+          this.sections[2].children[0]['style']['bottom'] = ''
+          this.workFlag = false
+        }
+      } else if (lastScrollY >= this.scrollPositions[1] && lastScrollY < this.scrollPositions[2] - this.scrollPositions[0]) {
+        if (!this.workFlag) {
+          this.sections[2].children[0].classList.add('fixed');
+          this.workFlag = true
+        }
+      } else if (lastScrollY >= this.scrollPositions[2] - this.scrollPositions[0]){
+        if (this.workFlag) {
+          this.sections[2].children[0].classList.remove('fixed');
+          this.sections[2].children[0]['style']['bottom'] = 0
+          this.workFlag = false
+        }
       }
     }
   };
