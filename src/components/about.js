@@ -8,11 +8,11 @@ class About extends Component {
         super(props)
         this.state = {
             'skills': [
-                {'title':'JavaScript', 'url':'js'}, {'title': 'CSS', 'url': 'css'}, {'title': 'html5', 'url': 'html'}, {'title': 'C++', 'url': 'cpp'}, {'title': 'Java', 'url': 'java'},
+                {'title':'Blockchain', 'url':'bc', 'ext':'png'}, {'title':'Kubernetes', 'url':'kb', 'ext':'png'}, {'title':'Saltstack', 'url':'st', 'ext':'png'},{'title':'JavaScript', 'url':'js'}, {'title': 'CSS', 'url': 'css'}, {'title': 'html5', 'url': 'html'}, {'title': 'C++', 'url': 'cpp'}, {'title': 'Java', 'url': 'java'},
                 {'title': 'Python', 'url': 'py'}, {'title': 'Php', 'url': 'php'}, {'title': 'SQL', 'url': 'sql'}, {'title': 'NodeJS', 'url': 'node'}
             ],
             'hobbies': [
-                {'title': 'Guitar', 'url': 'guitar'}, {'title': 'Cooking', 'url': 'food'},
+                {'title': 'Music', 'url': 'guitar'}, {'title': 'Cooking', 'url': 'food'},
                 {'title': 'Reading', 'url': 'books'},
                 {'title': 'Anime', 'url': 'anime'}
             ]
@@ -41,12 +41,12 @@ class About extends Component {
                     </p>
                     <h3><strong>Skills</strong></h3>
                     <div className='icon-table'>
-                        {skills.map(skill => <Icon title={skill.title} url={skill.url}/>)}
+                        {skills.map(skill => <Icon title={skill.title} url={skill.url} ext={skill.ext}/>)}
                     </div>
                     <h3><strong>Hobbies</strong></h3>
                     <p>On an ideal day you would find me jamming on my guitar and singing <strong>(out of tune)</strong>, or watching anime or just strolling through the streets of bangalore</p>
                     <div className='icon-table'>
-                        {hobbies.map(hobby => <Icon title={hobby.title} url={hobby.url} />)}
+                        {hobbies.map(hobby => <Icon title={hobby.title} url={hobby.url}/>)}
                     </div>
                 </div>
             </section>
